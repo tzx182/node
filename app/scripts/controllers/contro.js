@@ -1,0 +1,64 @@
+angular
+  .module('xiangmuApp').controller("contro",["$scope","$http","server","$state","$cookieStore","$cookies",function($scope,$http,server,$state,$cookieStore,$cookies){
+  	var num=0;
+      $http({
+      url:server+"item",
+      method:"get",
+      params:{"$skip":num,"$limit":3,"uid":$cookieStore.get("uid")}
+    }).success(function(e){
+        $scope.data=e;
+    })
+	$scope.xia=function(){
+		num+=3;
+		$http({
+		url:server+"item",
+		method:"GET",
+		params:{"$skip":num,"$limit":3,"uid":$cookieStore.get("uid")}
+	    }).success(function(e){
+		$scope.data=e
+	    });
+	}
+	$scope.shang=function(){
+		if(num<=0){
+		   return false
+		}else{
+	    num-=3;
+		$http({
+		url:server+"item",
+		method:"GET",
+		params:{"$skip":num,"$limit":3,"uid":$cookieStore.get("uid")}
+	    }).success(function(e){
+		$scope.data=e
+	    });
+		}
+		
+	}
+      $scope.add=function(){
+      	$state.go("add")
+      }
+     $scope.tian=function(){
+     var abc=$cookieStore.get("uid")
+      $scope.obj.uid=abc
+		$http({
+			url:server+"item",
+			method:"POST",
+			data:$scope.obj
+		}).success(function(){
+			window.history.back();
+		})
+	}
+    $scope.del=function(a){
+		$http({
+			url:server+"item/"+a.id,
+			method:"delete"
+		}).success(function(){
+			alert("删除成功")
+			$scope.data.splice($scope.data.indexOf(a),1)
+		})
+	}
+    $scope.out=function(){
+    	$cookies.remove("username")
+    	$cookies.remove("password")
+         $state.go("denglu")
+      }
+  	}])

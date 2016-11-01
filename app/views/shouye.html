@@ -1,0 +1,62 @@
+<div style="background: pink;" ng-controller="contro" style="background: #ccc">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid"> 
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header"> 
+ <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+   <span class="sr-only">Toggle navigation</span>
+   <span class="icon-bar"></span> 
+   <span class="icon-bar"></span>
+   <span class="icon-bar"></span> 
+ </button>
+   <a class="navbar-brand" href="#" style="color:pink;display: block;float: left;">美丽日记</a>
+   <span style="color: pink;display: block;float: left;margin:15px 0 0 0px;">Search:</span><input type="text"  placeholder="Search" ng-model="fun" style="display: block;float: left;margin-top: 12px;"> 
+</div> 
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav"> 
+        <li class="active">
+            <a href="#">所有日记</a>
+        </li> 
+        <li>
+            <a href="#">标签</a>
+        </li> 
+        <li>
+            <a href="#">查找</a>
+        </li>
+        <li>
+             <a href="#">修改密码</a>
+        </li> 
+        <li>
+             <a href="#" ng-click="out()">退出</a>
+        </li> 
+    </ul> 
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid --> 
+</nav> 
+    <div class="container ng-scope" ui-view="innav" style="margin-top:70px"> 
+        <div class="panel panel-default" ng-repeat="x in data  | filter : fun" style="border:2px solid pink">
+           <div class="panel-heading"> 
+               <h3 class="panel-title" style="height:20px"><span>日记{{$index+1}}</span>
+                <span class="glyphicon glyphicon-trash" style="float: right;" ng-click="del(x)"></span>    
+               </h3> 
+                  <span class="label label-success">标签1</span> 
+                  <span class="label label-success">标签2</span> 
+                   <span class="label label-success">标签3</span>
+            </div> 
+            <div class="panel-body" >
+                <div style="border-bottom:1px solid #eee;color:#777;margin-bottom:5px" >{{x.title}}
+                 <span ui-sref="xiugai({id:x.id,title:x.title,content:x.content})" class="glyphicon glyphicon-edit" style="float:right;" ng-click="dian()"></span>
+                </div>
+                  <div>{{x.content}}</div>
+               </div> 
+            </div> 
+            </div><!-- uiView: innav -->
+            <input type="button" class="btn btn-info" style="position:absolute;
+bottom:6px;left:20px;z-index:999;" ng-click="shang()" value="上一页"/>
+<input type="button" class="btn btn-info" style="position:absolute;z-index:999;
+bottom:6px;right:20px;" ng-click="xia()" value="下一页" />
+             <div href="" class="affix" style="bottom:5px;width:100%"> 
+            <div style="background:#337ab7;width:50px;height:50px;color:#fff;margin:0 auto;font-size:33px;line-height:50px;text-align:center;border-radius:25px;box-shadow:0px 0px 5px #337ab7" ng-click="add()">+</div> 
+            </div> 
+</div>

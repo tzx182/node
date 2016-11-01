@@ -1,0 +1,13 @@
+<div ng-controller="tzx" style="background: #fff">
+<img src="images/timg.jpg" alt="" class="img">
+<p class="mei">美丽日记</p>
+<form action="" name="loginName" id="loginName">
+<span class="name">name:</span><input type="text" ng-model="obj.username" id="username" name="username" placeholder="请输入账户" />
+<span class="name">pas:</span><input type="password" ng-model="obj.password" id="userpwd" name="userpwd" placeholder="请输入密码" />
+<p class="markpassword">
+	 <input type="checkbox" id="markpwd" ng-model="check" ng-checked="check"/>
+	 <label for="markpwd">七天免登录</label>
+</p>
+<a ng-click="denglu()" id="login">登录</a>
+</form>
+<a ui-sref="zhuce" id="register">注册</a></div>

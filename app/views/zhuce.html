@@ -1,0 +1,18 @@
+<div ng-controller="tzx" style="background: #fff">
+<img src="images/timg.jpg" alt="" class="img">
+<p class="mei">美丽日记</p>
+<form action="" name="registerName" id="registerName" method="post">
+ <div>
+   <p>账户：</p>
+ 	 <input type="text" ng-model="obj.username" id="username" name="username" placeholder="请输入账户" />
+ 	
+ </div>
+ <div>	
+   <p>登录密码：</p>
+ 	<input type="password" ng-model="obj.password" id="userpwd" name="userpwd" placeholder="请输入密码" />
+ 
+ </div>
+
+    <a ng-click="cc()" id="confirmRegister">注册</a>
+</form>
+</div>

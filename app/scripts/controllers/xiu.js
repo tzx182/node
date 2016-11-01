@@ -1,0 +1,19 @@
+angular
+  .module('xiangmuApp').controller("xiu",["$scope","$http","server","$state","$cookieStore","$cookies","$stateParams",function($scope,$http,server,$state,$cookieStore,$cookies,$stateParams){
+       $scope.obj=$stateParams;
+      $scope.gai=function(){
+      	 $http({
+			url:server+"item/"+$scope.obj.id,
+			method:"PUT",
+			data:$scope.obj
+		}).success(function(){
+			alert("ok");
+			 window.history.back();
+		})
+      }
+        $scope.out=function(){
+    	$cookies.remove("username")
+    	$cookies.remove("password")
+         $state.go("denglu")
+      }
+}])
